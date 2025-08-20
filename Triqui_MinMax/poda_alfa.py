@@ -1,14 +1,14 @@
-
 import math    # Para usar infinitos en el algoritmo minimax
 import os      # Para limpiar la pantalla en consola
 from triqui import Triqui
+
 # Algoritmo Minimax con Poda Alpha-Beta
-def minimax(self, estado, jugador, alpha, beta):
-    max_jugador = self.jugadorBot
-    otro_jugador = 'O' if jugador == 'X' else 'X'
+def minimax(self, estado, jugador, alpha, beta): #VARIABLES para realizar poda alfa-beta
+    max_jugador = self.jugadorBot # Jugador que maximiza
+    otro_jugador = 'O' if jugador == 'X' else 'X' # Jugador que minimiza
 
     # Caso base: si el juego terminó
-    if self.es_terminal(estado):
+    if self.es_terminal(estado): # Verifica si el estado es terminal
         if Triqui().jugador_gana(estado, self.jugadorBot):
             return {'posicion': None, 'puntuacion': 1 * (len(self.acciones(estado)) + 1)}
         elif Triqui().jugador_gana(estado, self.jugadorHumano):
