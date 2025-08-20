@@ -1,4 +1,4 @@
-import random  # Para decidir aleatoriamente si el humano es X u O
+
 import math    # Para usar infinitos en el algoritmo minimax
 import os      # Para limpiar la pantalla en consola
 from triqui import Triqui
