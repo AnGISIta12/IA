@@ -9,7 +9,7 @@ def minimax(self, estado, jugador, alpha, beta): #VARIABLES para realizar poda a
 
     # Caso base: si el juego terminó
     if self.es_terminal(estado): # Verifica si el estado es terminal
-        if Triqui().jugador_gana(estado, self.jugadorBot):
+        if Triqui().jugador_gana(estado, self.jugadorBot): 
             return {'posicion': None, 'puntuacion': 1 * (len(self.acciones(estado)) + 1)}
         elif Triqui().jugador_gana(estado, self.jugadorHumano):
             return {'posicion': None, 'puntuacion': -1 * (len(self.acciones(estado)) + 1)}
@@ -18,13 +18,13 @@ def minimax(self, estado, jugador, alpha, beta): #VARIABLES para realizar poda a
 
     # Si le toca a la máquina (maximizar)
     if jugador == max_jugador:
-        mejor = {'posicion': None, 'puntuacion': -math.inf}
-        for posible_movimiento in self.acciones(estado):
+        mejor = {'posicion': None, 'puntuacion': -math.inf} # Inicializa mejor con un valor muy bajo
+        for posible_movimiento in self.acciones(estado): # Itera sobre los movimientos posibles
             nuevoEstado = self.resultado(estado, posible_movimiento)
             puntuacion_sim = self.minimax(nuevoEstado, otro_jugador, alpha, beta)
             puntuacion_sim['posicion'] = posible_movimiento
 
-            if puntuacion_sim['puntuacion'] > mejor['puntuacion']:
+            if puntuacion_sim['puntuacion'] > mejor['puntuacion']: # Si encontramos una mejor puntuación
                 mejor = puntuacion_sim
             
             # Actualiza el valor de alpha
